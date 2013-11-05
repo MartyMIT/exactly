@@ -77,7 +77,7 @@ pts1=32
 pts2=25
 
 #Durations
-durblank=1000
+ISI=500
 
 #Dictionaries
 dots_dic={"0":[0],"1":[5],"2":[3,7],"3":[3,5,7],"4":[1,3,7,9],"5":[1,3,5,7,9],"6":[1,3,4,6,7,9]}
@@ -414,10 +414,12 @@ def experiment(ITEM,BLOCK):
     trial=0
     random.shuffle(ITEM)
     for i in ITEM:
+        pygame.mouse.set_pos([W/2,H/(1.2)])
         X=play(i)
         Y=data(i)
         trial +=1
         print >>out,name,age,sexe, blind, BLOCK,trial,Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7],Y[8],Y[9],Y[10],Y[11],Y[12],Y[13],Y[14],Y[15],Y[16], X[0],X[1]
+        blank(ISI)
                                                 
 try:
     mode=pygame.FULLSCREEN
