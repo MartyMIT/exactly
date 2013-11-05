@@ -1,0 +1,17 @@
+Sujet Age Gender Blind Block Essai Structure Nombre_X Identifiable Colored_dots Couleur_cible Couleur_filler Nombre_caseN Couleurcible_caseN Nombre_caseS Couleurcible_caseS Nombre_caseE Couleurcible_caseE Nombre_caseO Couleurcible_caseO Distance Expected_value Condition Response Response_time
+Sujet Age Gender Blind Block Essai Structure Nombre_X Identifiable Colored_dots Couleur_cible Couleur_filler Nombre_caseN Couleurcible_caseN Nombre_caseS Couleurcible_caseS Nombre_caseE Couleurcible_caseE Nombre_caseO Couleurcible_caseO Distance Expected_value Condition Response Response_time
+1 1 1 1 1 1 exactly 7 NA 4 blue yellow 5 0 4 0 5 0 4 1 -3 FALSE Inferior 50.1305483029 1997
+1 1 1 1 1 2 exactly 7 NA 6 black blue 5 1 5 0 1 1 3 0 -1 FALSE Inferior 73.3681462141 1473
+1 1 1 1 1 3 exactly 7 NA 7 blue yellow 2 1 1 0 5 1 2 0 0 TRUE Equal 10.182767624 1321
+1 1 1 1 1 4 no-more-than 7 NA 5 red black 1 0 4 0 1 0 5 1 -2 TRUE Inferior 51.6971279373 2225
+1 1 1 1 1 5 exactly 7 NA 10 red black 5 1 6 0 6 0 5 1 3 ? Superior 73.1070496084 1187
+1 1 1 1 1 6 no-more-than 7 NA 4 blue yellow 3 0 4 1 3 0 1 0 -3 TRUE Inferior 50.1305483029 1454
+1 1 1 1 1 7 no-less-than 7 NA 7 blue red 2 0 3 1 2 1 2 1 0 TRUE Equal 67.362924282 970
+1 1 1 1 1 8 less-than 7 NA 7 red green 6 1 6 0 1 1 1 0 0 FALSE Equal 81.7232375979 7037
+1 1 1 1 1 9 no-more-than 7 NA 10 blue yellow 1 0 4 0 4 1 6 1 3 FALSE Superior 50.1305483029 1853
+1 1 1 1 1 10 exactly 7 NA 9 red blue 4 1 3 1 6 0 2 1 2 ? Superior 72.3237597911 1220
+1 1 1 1 1 11 no-more-than 7 NA 8 blue green 2 1 1 0 4 1 2 1 1 FALSE Superior 40.2088772846 2155
+1 1 1 1 1 12 no-more-than 7 NA 9 blue yellow 3 1 3 0 6 1 3 0 2 FALSE Superior 50.1305483029 517
+1 1 1 1 1 13 no-less-than 7 NA 10 blue black 2 1 3 0 4 1 4 1 3 TRUE Superior 50.1305483029 554
+1 1 1 1 1 14 less-than 7 NA 10 blue black 4 1 4 1 2 1 2 0 3 FALSE Superior 55.3524804178 6370
+1 1 1 1 1 15 less-than 7 NA 9 blue yellow 3 1 3 1 6 0 3 1 2 FALSE Superior 50.1305483029 2172
