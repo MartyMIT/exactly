@@ -17,8 +17,7 @@ cpos=W/2,H/2
 radius=8
 
 #Range of values for `n'
-num=[7]
-#num=[6,7,8]
+num=[6,7,8]
 
 #Output
 manip='exactly'
@@ -32,8 +31,8 @@ out = open(output_file, 'at')
 print >>out, "Sujet Age Gender Blind Block Essai Structure Nombre_X Identifiable Colored_dots Couleur_cible Couleur_filler Nombre_caseN Couleurcible_caseN Nombre_caseS Couleurcible_caseS Nombre_caseE Couleurcible_caseE Nombre_caseO Couleurcible_caseO Distance Expected_value Condition Response Response_time"
 
 #Instructions
-#instru_1='instru_1.jpg'
-#instru_2='instru_2.jpg'
+instru_1='Slide1.jpg'
+instru_2='Slide2.jpg'
 
 #Areas
 z=3.5
@@ -68,7 +67,7 @@ purple=(154,50,205)
 orange=(255,165,0) 
 bg=white
 fg=black
-targetcolors=["red","blue","black"]
+targetcolors=["red","blue","green"]
 fillercolors=["red","blue","black","yellow","green"]
 
 #Font
@@ -278,6 +277,7 @@ def play(ITEM):
     rt=0
     no_response_yet=True
     t0=pygame.time.get_ticks()
+    pygame.event.clear(MOUSEBUTTONDOWN)
     while no_response_yet==True:
         draw(ITEM)
         pygame.display.flip()
@@ -428,8 +428,8 @@ try:
     '''
     Instructions
     '''
-#    procedure(instru_1)
-#    procedure(instru_2)
+    procedure(instru_1)
+    procedure(instru_2)
     
     '''
     BLOC 1: Exactly n As are Bs.
