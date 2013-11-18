@@ -28,7 +28,7 @@ blind=raw_input("Color blindness (Y/N): ")
 data_directory='data'
 output_file = data_directory + '/' + manip + '_' + name + '.txt'
 out = open(output_file, 'at')
-print >>out, "Sujet Age Gender Blind Block Essai Structure Nombre_X Identifiable Colored_dots Couleur_cible Couleur_filler Nombre_caseN Couleurcible_caseN Nombre_caseS Couleurcible_caseS Nombre_caseE Couleurcible_caseE Nombre_caseO Couleurcible_caseO Distance Expected_value Condition Response Response_time"
+print >>out, "Sujet Age Gender Blind Block Essai Structure Numeral Group Colored_dots Couleur_cible Couleur_filler Nombre_caseN Couleurcible_caseN Nombre_caseS Couleurcible_caseS Nombre_caseE Couleurcible_caseE Nombre_caseO Couleurcible_caseO Distance Expected_value Condition Response Response_time"
 
 #Instructions
 instru_1='Slide1.jpg'
@@ -76,7 +76,7 @@ pts1=32
 pts2=25
 
 #Durations
-ISI=500
+ISI=300
 
 #Dictionaries
 dots_dic={"0":[0],"1":[5],"2":[3,7],"3":[3,5,7],"4":[1,3,7,9],"5":[1,3,5,7,9],"6":[1,3,4,6,7,9]}
