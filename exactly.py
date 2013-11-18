@@ -17,7 +17,7 @@ cpos=W/2,H/2
 radius=8
 
 #Range of values for `n'
-num=[6,7,8]
+num=[4,5,6]
 
 #Output
 manip='exactly'
@@ -82,11 +82,23 @@ ISI=500
 dots_dic={"0":[0],"1":[5],"2":[3,7],"3":[3,5,7],"4":[1,3,7,9],"5":[1,3,5,7,9],"6":[1,3,4,6,7,9]}
 
 options={
+    "4":{
+        "4":[(2,2),(2,1,1),(3,1)],
+        "5":[(2,3),(3,1,1),(2,2,1)],
+        "6":[(3,3),(2,2,2),(3,2,1)],
+        "7":[(3,3,1),(3,2,2)]
+         },       
+    "5":{
+        "5":[(2,3),(2,2,1),(3,1,1),(4,1)],
+        "6":[(4,2),(3,3),(2,2,2),(3,2,1),(4,1,1)],
+        "7":[(3,4),(3,2,2),(4,2,1),(6,1)],
+        "8":[(4,4),(6,2),(3,3,2),(4,3,1)]
+        },
     "6":{
         "6":[(3,3),(4,2),(5,1),(2,2,2),(4,1,1)],
         "7":[(4,3),(5,2),(3,3,1),(4,2,1)],
-        "8":[(4,4),(5,3),(6,2),(3,3,2),(4,3,1),(4,2,2)],
-        "9":[(4,5),(6,3),(3,3,3),(4,3,2)]
+        "8":[(4,4),(5,3),(3,3,2),(4,3,1),(4,2,2)],
+        "9":[(4,5),(2,2,5),(3,3,3),(4,3,2)]
         },
     "7":{
         "6":[(3,3),(4,2),(5,1),(2,2,2),(4,1,1)],
@@ -101,8 +113,7 @@ options={
         "8":[(4,4),(6,2),(5,3),(3,3,2),(4,2,2)],
         "9":[(5,4),(6,3),(3,3,3),(4,3,2),(5,2,2)],
         "10":[(5,5),(6,4),(3,4,3),(4,4,2)],
-        "11":[(6,5),(3,3,5),(4,3,4),(6,4,1)]
-        }
+        "11":[(6,5),(3,3,5),(4,3,4),(6,4,1)]}
         }
 
 
@@ -112,11 +123,19 @@ def item(sentence_item):
     for modifier in ["exactly", "less-than", "more-than", "no-less-than", "no-more-than"]:
         for n in num:
             if modifier=="exactly":
-                for i in [n-3,n-2,n-1,n,n,n,n+3,n+2,n+1,n+3,n+2,n+1]: #range(n-3,n+4)
+                for i in [n-3,n-2,n-1,n,n,n+3,n+2,n+1]: #range(n-3,n+4)
                     ITEM ={"modifier":modifier,
                            "numeral":n,
                            "colored_dots":i,
                            "group_dots":"NA"}
+                    picture_item(ITEM)
+                    sentence_item(ITEM)
+                    items.append(ITEM)
+                for i in [n+3,n+2,n+1,n]: #range(n-3,n+4)
+                    ITEM ={"modifier":modifier,
+                           "numeral":n,
+                           "colored_dots":i,
+                           "group_dots":"A"}
                     picture_item(ITEM)
                     sentence_item(ITEM)
                     items.append(ITEM)
@@ -162,18 +181,29 @@ def picture_item(ITEM):
                     dice[2]:{"dots":random.randint(1,6), "target_color":0},
                     dice[3]:{"dots":random.randint(1,6), "target_color":0}
                     }
+    
+    #GROUP AVAILABLE
+    if ITEM["group_dots"]=="A":
+        ITEM["picture"][dice[0]]["dots"] = ITEM["numeral"]
+        ITEM["picture"][dice[0]]["target_color"] = 1
+        surplus = ITEM["colored_dots"]-ITEM["picture"][dice[0]]["dots"]
+        if surplus > 0:
+            ITEM["picture"][dice[1]]["dots"] = surplus
+            ITEM["picture"][dice[1]]["target_color"] = 1
         
     #GROUP NOT AVAILABLE
-    if ITEM["colored_dots"] < 6:
-        ITEM["picture"][dice[0]]["dots"] = ITEM["colored_dots"]
-        ITEM["picture"][dice[0]]["target_color"] = 1
+    elif ITEM["group_dots"]=="NA":
+        if ITEM["colored_dots"] < ITEM["numeral"]:
+            ITEM["picture"][dice[0]]["numeral"] = ITEM["colored_dots"]
+            ITEM["picture"][dice[0]]["target_color"] = 1
+
+        elif ITEM["colored_dots"] >= ITEM["numeral"]:
+            option=random.choice(options[str(ITEM["numeral"])][str(ITEM["colored_dots"])])
+            for x in range(len(option)):
+                ITEM["picture"][dice[x]]["dots"]=option[x]
+                ITEM["picture"][dice[x]]["target_color"]=1
+
         
-    #elif ITEM["colored_dots"] >= ITEM["numeral"]:
-    else:
-        option=random.choice(options[str(ITEM["numeral"])][str(ITEM["colored_dots"])])
-        for x in range(len(option)):
-            ITEM["picture"][dice[x]]["dots"]=option[x]
-            ITEM["picture"][dice[x]]["target_color"]=1
 
 def phrase_item1(ITEM):
     if ITEM["modifier"]=="exactly":
@@ -224,8 +254,8 @@ def draw(ITEM):
     answerareasubsurf.fill(grey)
     p=15
     pol=pygame.font.SysFont(style, pts2)
-    answer_no=pol.render("False", 1, fg)
-    answer_yes=pol.render("True", 1, fg)
+    answer_no=pol.render("No", 1, fg)
+    answer_yes=pol.render("Yes", 1, fg)
     no=answer_no.get_rect()
     yes=answer_yes.get_rect()
     no.center=[(answerarea[0]+answerarea[2]/p),(answerarea[1]+2*answerarea[3]/3)]
